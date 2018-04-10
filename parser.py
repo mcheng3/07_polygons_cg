@@ -67,7 +67,7 @@ def parse_file( fname, edges, edges1, transform, screen, color ):
 
         if line == 'sphere':
             #print 'SPHERE\t' + str(args)
-            add_sphere(edges,
+            add_sphere(edges1,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step_3d)
 
