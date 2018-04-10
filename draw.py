@@ -68,25 +68,12 @@ def add_sphere( edges, cx, cy, cz, r, step ):
     longt_stop = step
 
     step+= 1
-    for lat in range(lat_start, lat_stop-1):
+    for lat in range(lat_start, lat_stop):
         for longt in range(longt_start, longt_stop+1):
-            index = (lat-1)* step + longt
-            index1 = (lat ) * step + longt
-            index2 = (lat ) * step + longt + 1
+            index = ((lat-1)* step + longt) % len(points)
+            index1 = (lat * step + longt) % len(points)
+            index2 = (lat * step + longt + 1) % len(points)
             add_polygon(edges, points[index][0],
-                     points[index][1],
-                     points[index][2],
-                     points[index1][0],
-                     points[index1][1],
-                     points[index1][2],
-                     points[index2][0],
-                     points[index2][1],
-                     points[index2][2])
-    for longt in range(longt_start, longt_stop+1):
-        index = (lat_stop-1) * step + longt
-        index1 = (lat_stop-2) * step + longt
-        index2 = (lat_stop-2) * step + longt + 1
-        add_polygon(edges, points[index][0],
                      points[index][1],
                      points[index][2],
                      points[index1][0],
@@ -125,11 +112,11 @@ def add_torus( edges, cx, cy, cz, r0, r1, step ):
     longt_start = 0
     longt_stop = step
 
-    for lat in range(lat_start, lat_stop-2):
-        for longt in range(longt_start, longt_stop-1):
-            index = lat * step + longt
-            index1 = (lat + 1) * step + longt
-            index2 = (lat + 1) * step + longt + 1
+    for lat in range(lat_start, lat_stop):
+        for longt in range(longt_start, longt_stop+1):
+            index = ((lat-1)* step + longt) % len(points)
+            index1 = ((lat ) * step + longt) % len(points)
+            index2 = ((lat ) * step + longt + 1) % len(points)
             add_polygon(edges, points[index][0],
                      points[index][1],
                      points[index][2],
