@@ -53,7 +53,7 @@ def parse_file( fname, edges, edges1, transform, screen, color ):
     lines = f.readlines()
 
     step = 100
-    step_3d = 20
+    step_3d = 15
     c = 0
 
     while c < len(lines):
@@ -73,7 +73,7 @@ def parse_file( fname, edges, edges1, transform, screen, color ):
 
         elif line == 'torus':
             #print 'TORUS\t' + str(args)
-            add_torus(edges,
+            add_torus(edges1,
                       float(args[0]), float(args[1]), float(args[2]),
                       float(args[3]), float(args[4]), step_3d)
 
